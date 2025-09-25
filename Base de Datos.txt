@@ -1,0 +1,90 @@
+create database Pops;
+
+use Pops;
+
+create table usuarios (
+    no_colaborador varchar(15) PRIMARY KEY not null,
+    nombre_colaborador varchar(30),
+    rol_colaborador varchar(30),
+    contraseña varchar(30));
+create table productos (
+    codigo_barras INT PRIMARY KEY not null,
+    descripcion varchar(45) UNIQUE,
+    imagen varchar(255));
+create table registros_escaneos (
+	id_escaneado INT not null PRIMARY KEY,
+    lote_escaneado int not null,
+    fecha_escaneo date,
+    hora_escaneo time,
+    codigo_barras_producto int not null,
+    descripcion_producto varchar(255),
+    estado_escaneo varchar(45),
+    
+CONSTRAINT fk_codigo_barras
+FOREIGN KEY (codigo_barras_producto)
+REFERENCES Productos(codigo_barras),
+
+CONSTRAINT fk_descripcion
+FOREIGN KEY (descripcion_producto)
+REFERENCES Productos(descripcion));
+
+create table inv_calidad_vid_plas_queb (
+    codigo_vidrio int PRIMARY KEY not null,
+    estado_vidrio varchar(45),
+    ubicacion varchar(45));
+create table inv_calidad_herramienta (
+    codigo_herramienta int PRIMARY KEY not null,
+    nombre_herramienta varchar(45),
+    cantidad_herramienta int not null,
+    necesidad_herramienta varchar(150),
+    estado_herramienta varchar(45));
+create table inv_calidad_manejo_int_plagas (
+    codigo_dispositivo int PRIMARY key not null,
+    ubicacion varchar(45) not null,
+    utilidad_dispositivo varchar(45));
+create table inv_calidad_utencilios_detectables (
+    codigo_utencilio int PRIMARY KEY not null,
+    nombre_utencilio varchar(45),
+    cantidad_utencilio int not null);
+create table inv_mantenimiento_refacciones (
+    id_refaccion int PRIMARY KEY not null,
+    no_serie_refaccion varchar(50),
+    nombre_refaccion varchar(50),
+    descripcion varchar(50),
+    cantidad int,
+    fecha_introduccion date,
+    fecha_salida date);
+create table inv_ti_activo_material (
+    id_material int PRIMARY KEY not null, 
+    objeto varchar(30),
+    activo varchar(30),
+    cantidad_material int,
+    tipo_activo varchar(30),
+    estado_activo varchar(30),
+    observaciones_activo varchar(30));
+create table inv_ti_equipos_computo (
+    clave_equipo varchar(15) PRIMARY KEY NOT null,
+    linea_equipo varchar(15),
+    area_equipo varchar(30),
+    departamento_equipo varchar(30),
+    nombre_posicion_equipo varchar(50),
+    estado_equipo varchar(30),
+    hostname_equipo varchar(50),
+    nombre_computadora_equipo varchar(50),
+    modelo_computadora_equipo varchar(50),
+    etiqueta_servicio_equipo varchar(50),
+    express_code_equipo varchar(50),
+    procesador_equipo varchar(50),
+    generacion_equipo varchar(50),
+    memoria_equipo varchar(50),
+    almacenamiento_equipo varchar(50),
+    sistema_operativo_equipo varchar(50),
+    cargador_equipo varchar(50),
+    IPv4_v6_equipo double(20),
+    observaciones_equipo varchar(50));
+create table inv_ti_cisco (
+    numero_serie_cisco varchar(50),
+    marca_cisco varchar(50),
+    modelo_cisco varchar(50),
+    adicional_cisco varchar(50),
+    observaciones_cisco varchar(50));
