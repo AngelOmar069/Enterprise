@@ -6,11 +6,14 @@ create table usuarios (
     no_colaborador varchar(15) PRIMARY KEY not null,
     nombre_colaborador varchar(30),
     rol_colaborador varchar(30),
+    area_colaborador varchar(30),
     contraseña varchar(30));
+    
 create table productos (
     codigo_barras INT PRIMARY KEY not null,
     descripcion varchar(45) UNIQUE,
     imagen varchar(255));
+    
 create table registros_escaneos (
 	id_escaneado INT not null PRIMARY KEY,
     lote_escaneado int not null,
@@ -32,20 +35,24 @@ create table inv_calidad_vid_plas_queb (
     codigo_vidrio int PRIMARY KEY not null,
     estado_vidrio varchar(45),
     ubicacion varchar(45));
+    
 create table inv_calidad_herramienta (
     codigo_herramienta int PRIMARY KEY not null,
     nombre_herramienta varchar(45),
     cantidad_herramienta int not null,
     necesidad_herramienta varchar(150),
     estado_herramienta varchar(45));
+    
 create table inv_calidad_manejo_int_plagas (
     codigo_dispositivo int PRIMARY key not null,
     ubicacion varchar(45) not null,
     utilidad_dispositivo varchar(45));
+    
 create table inv_calidad_utencilios_detectables (
     codigo_utencilio int PRIMARY KEY not null,
     nombre_utencilio varchar(45),
     cantidad_utencilio int not null);
+    
 create table inv_mantenimiento_refacciones (
     id_refaccion int PRIMARY KEY not null,
     no_serie_refaccion varchar(50),
@@ -54,6 +61,7 @@ create table inv_mantenimiento_refacciones (
     cantidad int,
     fecha_introduccion date,
     fecha_salida date);
+    
 create table inv_ti_activo_material (
     id_material int PRIMARY KEY not null, 
     objeto varchar(30),
@@ -62,6 +70,7 @@ create table inv_ti_activo_material (
     tipo_activo varchar(30),
     estado_activo varchar(30),
     observaciones_activo varchar(30));
+    
 create table inv_ti_equipos_computo (
     clave_equipo varchar(15) PRIMARY KEY NOT null,
     linea_equipo varchar(15),
@@ -80,11 +89,13 @@ create table inv_ti_equipos_computo (
     almacenamiento_equipo varchar(50),
     sistema_operativo_equipo varchar(50),
     cargador_equipo varchar(50),
-    IPv4_v6_equipo double(20),
+    IPv4_v6_equipo double,
     observaciones_equipo varchar(50));
+    
 create table inv_ti_cisco (
     numero_serie_cisco varchar(50),
     marca_cisco varchar(50),
     modelo_cisco varchar(50),
     adicional_cisco varchar(50),
     observaciones_cisco varchar(50));
+    
